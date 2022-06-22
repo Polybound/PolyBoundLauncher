@@ -2,12 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style/index.css" />
     <title>PolyBound Launcher</title>
-    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <img src="./assets/polybound-logo.png" alt="polybound logo" width="64">
-    <h1>PolyBound Launcher</h1>
-    <p>Welcome to your Electron application.</p>
+    <div class="app">
+      <div class="topBar">
+        <div class="titleBar">
+          <img src="./assets/polybound-logo.png" alt="polybound logo" width="48" height="48">
+          <div class="title"> 
+            <h1>PolyBound Launcher</h1> 
+          </div>
+        </div>
+        <div class="titleBarBtns">
+          <button id="closeBtn" class="topBtn closeBtn">&#10006;</button>
+        </div>
+      </div>
+      <!-- <img src="./assets/polybound-logo.png" alt="polybound logo" width="64"> -->
+      <!-- <h1>PolyBound Launcher</h1> -->
+      <p>Welcome to your Electron application.</p>
+    </div>
+
+    <script>
+      var ipc = require('electron').ipcRenderer;
+      var closeBtn = document.getElementById('closeBtn');
+      closeBtn.addEventListener('click', function(event) {
+        ipc.send('closeApp');
+      });
+    </script>
   </body>
 </html>
